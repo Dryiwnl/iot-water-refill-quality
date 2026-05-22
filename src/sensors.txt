@@ -1,0 +1,11 @@
+#include <Arduino.h>
+#include "sensors.h"
+
+
+#define TRIG_PIN 5
+#define ECHO_PIN 18
+
+#define PH_PIN 34
+#define TURB_PIN 32
+
+//CALIBRAÇÃO DOS SENSORES

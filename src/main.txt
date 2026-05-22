@@ -1,0 +1,56 @@
+#include <Arduino.h>
+#include "sensors.h"
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+
+  iniciarSensores();
+
+  Serial.println("====================================");
+  Serial.println("Sistema iniciado: pH + Turbidez + Ultrassom");
+  Serial.println("====================================");
+}
+
+void loop() {
+  float distancia = lerDistanciaCM();
+
+  float tensaoPH = 0.0;
+  float tensaoTurbidez = 0.0;
+
+  lerTensoesAnalogicas2Min(tensaoPH, tensaoTurbidez);
+
+  float ph = calcularPH(tensaoPH);
+  float turbidez = calcularTurbidez(tensaoTurbidez);
+
+  Serial.println();
+  Serial.println("========== RESULTADO FINAL ==========");
+
+  if (distancia < 0) {
+    Serial.println("Distancia: sem leitura");
+  } else {
+    Serial.print("Distancia: ");
+    Serial.print(distancia, 2);
+    Serial.println(" cm");
+  }
+
+  Serial.print("Tensao pH Po: ");
+  Serial.print(tensaoPH, 3);
+  Serial.println(" V");
+
+  Serial.print("pH estimado: ");
+  Serial.println(ph, 2);
+
+  Serial.print("Tensao turbidez OUT: ");
+  Serial.print(tensaoTurbidez, 3);
+  Serial.println(" V");
+
+  Serial.print("Turbidez estimada: ");
+  Serial.print(turbidez, 1);
+  Serial.println(" NTU");
+
+  Serial.println("=====================================");
+  Serial.println();
+
+  delay(5000);
+}

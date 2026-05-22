@@ -1,0 +1,44 @@
+#include <Arduino.h>
+
+#define TRIG_PIN 5
+#define ECHO_PIN 18
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+
+  digitalWrite(TRIG_PIN, LOW);
+
+  Serial.println("=== Teste JSN-SR04T sem conversor ===");
+  Serial.println("Sensor alimentado em 3.3V");
+  Serial.println("TRIG -> GPIO 5");
+  Serial.println("ECHO -> GPIO 18");
+}
+
+void loop() {
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(5);
+
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(20);
+  digitalWrite(TRIG_PIN, LOW);
+
+  unsigned long duracao = pulseIn(ECHO_PIN, HIGH, 60000);
+
+  if (duracao == 0) {
+    Serial.println("Sem leitura / fora de alcance");
+  } else {
+    float distancia_cm = duracao * 0.0343 / 2.0;
+
+    Serial.print("Duracao: ");
+    Serial.print(duracao);
+    Serial.print(" us | Distancia: ");
+    Serial.print(distancia_cm);
+    Serial.println(" cm");
+  }
+
+  delay(500);
+}
