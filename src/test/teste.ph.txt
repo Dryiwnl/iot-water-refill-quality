@@ -1,0 +1,69 @@
+#include <Arduino.h>
+
+#define PH_PIN 34
+
+// Calibrado para que a água fique próxima de pH 7
+float tensao_ph7 = 2.579;
+
+// Ganho aumentado para ampliar diferenças pequenas
+float slope = -120.0;
+
+int buffer_arr[10], temp;
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+
+  analogReadResolution(12);
+  analogSetPinAttenuation(PH_PIN, ADC_11db);
+
+  Serial.println("=== TESTE SENSOR PH ===");
+}
+
+int lerADCFiltrado() {
+  for (int i = 0; i < 10; i++) {
+    buffer_arr[i] = analogRead(PH_PIN);
+    delay(30);
+  }
+
+  for (int i = 0; i < 9; i++) {
+    for (int j = i + 1; j < 10; j++) {
+      if (buffer_arr[i] > buffer_arr[j]) {
+        temp = buffer_arr[i];
+        buffer_arr[i] = buffer_arr[j];
+        buffer_arr[j] = temp;
+      }
+    }
+  }
+
+  long soma = 0;
+
+  for (int i = 2; i < 8; i++) {
+    soma += buffer_arr[i];
+  }
+
+  return soma / 6;
+}
+
+void loop() {
+  int adc = lerADCFiltrado();
+
+  float tensao = adc * 3.3 / 4095.0;
+
+  float ph = 7 + slope * (tensao - tensao_ph7);
+
+  if (ph < 0) ph = 0;
+  if (ph > 14) ph = 14;
+
+  Serial.print("ADC: ");
+  Serial.print(adc);
+
+  Serial.print(" | Tensao: ");
+  Serial.print(tensao, 3);
+  Serial.print(" V");
+
+  Serial.print(" | pH: ");
+  Serial.println(ph, 2);
+
+  delay(1000);
+}

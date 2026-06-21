@@ -13,3 +13,5 @@
 *.code-workspace
 
 .DS_Store
+
+secrets.h

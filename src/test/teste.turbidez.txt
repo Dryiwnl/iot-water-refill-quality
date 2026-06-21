@@ -1,0 +1,33 @@
+#include <Arduino.h>
+
+// Pino OUT analogico do sensor de turbidez
+#define TURB_PIN 32
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+
+  analogReadResolution(12);
+  analogSetPinAttenuation(TURB_PIN, ADC_11db);
+
+  Serial.println("=== Teste Analogico Sensor de Turbidez ===");
+  Serial.println("VCC -> VIN/5V");
+  Serial.println("GND -> GND");
+  Serial.println("OUT -> GPIO32");
+  Serial.println();
+}
+
+void loop() {
+  int adc = analogRead(TURB_PIN);
+
+  float tensao = adc * 3.3 / 4095.0;
+
+  Serial.print("ADC: ");
+  Serial.print(adc);
+
+  Serial.print(" | Tensao OUT: ");
+  Serial.print(tensao, 3);
+  Serial.println(" V");
+
+  delay(500);
+}

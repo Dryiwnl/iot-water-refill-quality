@@ -1,0 +1,18 @@
+#include <Arduino.h>
+
+#define RELE_PIN 23
+
+void setup() {
+    Serial.begin(115200);
+    pinMode(RELE_PIN, OUTPUT);
+}
+
+void loop() {
+    digitalWrite(RELE_PIN, LOW);
+    Serial.println("ON");
+    delay(2000);
+
+    digitalWrite(RELE_PIN, HIGH);
+    Serial.println("OFF");
+    delay(2000);
+}
