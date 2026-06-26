@@ -70,6 +70,8 @@ Projeto individual. Todas as etapas são de responsabilidade de Matheus Viganó 
 - Blog da Robótica — Sensor de turbidez com Arduino: https://www.blogdarobotica.com/2023/01/10/como-utilizar-o-modulo-sensor-de-turbidez-de-particulas-suspensas-na-agua-com-arduino/
 - Usinainfo — Sensor de pH: como calibrar e configurar: https://www.usinainfo.com.br/blog/sensor-de-ph-arduino-como-calibrar-e-configurar/
 - Vídeo de apoio: https://www.youtube.com/watch?v=nT6Q5atNLJM
+- Manual de instrução do PH: https://cdn.awsli.com.br/969/969921/arquivos/ph-sensor-ph-4502c.pdf
+- Datasheet do Sensor de turbidez (Note que é o datasheet do mesmo sensor porém com outro módulo): https://cdn.awsli.com.br/969/969921/arquivos/ph-sensor-ph-4502c.pdf 
 
 ## 8. Expectativas de Resultado
 
