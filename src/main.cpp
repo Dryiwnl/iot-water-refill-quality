@@ -119,7 +119,7 @@ void loop() {
     publicarFeedTexto("bomba", "OFF");
 
     float tensaoPH = lerTensaoPH();
-    float PH = calcularPH(tensaoPH);
+   float PH = calcularPH(tensaoPH);
 
     float tensaoTurbidez = lerTensaoTurbidez();
     float turbidez = calcularNTU(tensaoTurbidez);

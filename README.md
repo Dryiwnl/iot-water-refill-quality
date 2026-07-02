@@ -6,7 +6,9 @@ An ESP32-based IoT system for automatically refilling a water trough and monitor
 **Course:** Projeto Integrador 1 — DEC0013
 **Semester:** 2026.1
 
----
+## 🎥 Demonstration
+
+[![Como eu desenvolvi um bebedouro inteligente que monitora a qualidade da água automaticamente](https://img.youtube.com/vi/zvmtmu9PjL4/hqdefault.jpg)](https://www.youtube.com/watch?v=zvmtmu9PjL4)
 
 ## Introduction
 

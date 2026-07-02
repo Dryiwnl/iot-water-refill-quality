@@ -4,7 +4,7 @@
 #define TURB_PIN 32
 
 // tensão medida em água limpa usada como referência para 0 NTU
-float tensao_limpa = 2.760;
+float tensao_limpa = 2.062;
 
 // ganho ajustável para transformar queda de tensão em turbidez
 float ganho_turbidez = 1000.0;

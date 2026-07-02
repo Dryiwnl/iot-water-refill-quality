@@ -5,10 +5,10 @@
 //ATENÇÃO: esse valor pode ser alterado de acordo com a demanda, pois com o tempo, o módulo 4502C de pH perde a calibração
 //potanto caso o código não retorne algo em torno de 7.00 a calibração deve ser feita novamente
 //tensao_ph7 representa a tensão medida na água usada como referência para pH 7
-float tensao_ph7 = 2.688;
+float tensao_ph7 = 2.200;
 
 //Ganho aumentado para ampliar diferenças pequenas de tensão
-float slope = -120.0;
+float slope = -30.0;
 
 //A documentação pede para que uma leitura demore no mínimo 2min para a sonda estabilizar. Nesse caso colocamos 1min a mais
 //por precaução, porém, tabém pode ser alterado de acordo com a demanda (contando que TEMPO_TESTE>=2min)
